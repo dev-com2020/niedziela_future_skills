@@ -19,15 +19,18 @@ public class Main {
         invoker.executeCommand(addProduct2);
 
         // Usunięcie produktu z zamówienia
-        Command removeProduct = new RemoveProductCommand(order, "Laptop");
-        invoker.executeCommand(removeProduct);
+//        Command removeProduct = new RemoveProductCommand(order, "Laptop");
+//        invoker.executeCommand(removeProduct);
 
-        // Wyświetlenie bieżącego stanu zamówienia
-        System.out.println("Current order: " + order);
+        String filePath = "zamowienie.txt";
+        Command saveOrder = new SaveOrderCommand(order, filePath);
+        invoker.executeCommand(saveOrder);
 
         // Cofnięcie ostatniej operacji
         invoker.undoLastCommand();
-        System.out.println("After undo: " + order);
+
+        // Wyświetlenie bieżącego stanu zamówienia
+        System.out.println("Current order: " + order);
 
         // Cofnięcie kolejnej operacji
         invoker.undoLastCommand();
